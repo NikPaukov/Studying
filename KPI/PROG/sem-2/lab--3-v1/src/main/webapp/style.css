@@ -1,0 +1,17 @@
+
+img{
+    margin-top: 40px;
+    width: 300px;
+    height: 101px;
+}
+body{
+    background-color: burlywood;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+td, td{
+    border: 3px solid black ;
+}
+

@@ -1,0 +1,45 @@
+body {
+    background-color: burlywood;
+}
+
+.header {
+    text-align: center;
+    font-family: "Times New Roman", cursive;
+    font-style: italic;
+
+}
+
+.docs-link {
+    font-size: 24px;
+    display: inline-block;
+    margin: 3px;
+    text-decoration: none;
+    color: black;
+
+}
+
+.docs-link:hover {
+    background-color: bisque;
+}
+
+.centred {
+    text-align: center;
+}
+
+input {
+    margin-top: 10px;
+    background-color: blanchedalmond;
+    border: none;
+}
+
+img {
+    margin-top: 40px;
+    width: 400px;
+    height: 131px;
+}
+
+.submit {
+    margin-top: 20px;
+    width: 150px;
+    height: 40px
+}

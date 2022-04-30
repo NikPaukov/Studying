@@ -8,10 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ParamSerivce {
+public class TableOneParamSerivce {
     String[] paramNames;
 
-    public ParamSerivce(String[] paramNames) {
+    public TableOneParamSerivce(String[] paramNames) {
         this.paramNames = paramNames;
     }
 
@@ -26,7 +26,7 @@ public class ParamSerivce {
     }
 
 
-    public Map<String, Double> getDoubleParams(Map<String, String[]> params) {
+    public Map<String, Double> reTypeParams(Map<String, String[]> params) {
         Map<String, Double> res = new HashMap<>();
         for (String name : params.keySet()) {
             res.put(name, Double.parseDouble(params.get(name)[0]));

@@ -1,10 +1,11 @@
-package com.example.lab3;
+package com.example.lab3.TableOne;
 
+import com.example.lab3.Counter;
+import com.example.lab3.FormulaOneCounter;
+import com.example.lab3.TableOneParamSerivce;
 import com.example.lab3.validators.*;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
@@ -12,14 +13,14 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 @WebServlet(name = "count", value = "/count")
-public class TableServlet extends HttpServlet {
-    FormulaOneCounter counter;
+public class TableOneServlet extends HttpServlet {
+    Counter counter;
     String[] paramNames;
-    ParamSerivce paramSerivce;
+    TableOneParamSerivce paramSerivce;
 
     public void init() {
         counter = new FormulaOneCounter();
-        paramSerivce = new ParamSerivce(paramNames);
+        paramSerivce = new TableOneParamSerivce(paramNames);
         paramNames = new String[]{"aFrom", "aTo", "aStep", "bFrom",
                 "bTo", "bStep", "cFrom", "cTo", "cStep", "dFrom", "dTo", "dStep",};
     }
@@ -44,7 +45,7 @@ public class TableServlet extends HttpServlet {
             return;
         }
         //parsing params to Double
-        Map<String, Double> doubleParams = paramSerivce.getDoubleParams(params);
+        Map<String, Double> doubleParams = paramSerivce.reTypeParams(params);
 
 
 

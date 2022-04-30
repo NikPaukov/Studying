@@ -1,6 +1,4 @@
-<%@ page import="com.example.lab3.CookiesService" %>
-<%@ page import="com.example.lab3.ParamSerivce" %>
-<%@ page import="java.util.Arrays" %>
+<%@ page import="com.example.lab3.TableOneParamSerivce" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -9,13 +7,13 @@
     <link rel="stylesheet" href="style.css">
     <%! double[] params;
         double[] res;
-        ParamSerivce paramSerivce;
+        TableOneParamSerivce paramSerivce;
         public void init() throws ServletException {
             params = new double[]{0.1, 0.5, 0.1, -2.5, -2, 0.1, 1.65, 2.05, 0.1, 3, 3.6, 0.2};
         }
     %>
     <%
-        paramSerivce = new ParamSerivce((String[]) request.getAttribute("paramNames"));
+        paramSerivce = new TableOneParamSerivce((String[]) request.getAttribute("paramNames"));
         if (request.getAttribute("params")!=null) {
             {
                 params = paramSerivce.setParamsFromRequest(request);
@@ -26,7 +24,6 @@
             params = new double[]{0.1, 0.5, 0.1, -2.5, -2, 0.1, 1.65, 2.05, 0.1, 3, 3.6, 0.2};
         }
         res = (double[]) request.getAttribute("res");
-
     %>
 </head>
 <body>

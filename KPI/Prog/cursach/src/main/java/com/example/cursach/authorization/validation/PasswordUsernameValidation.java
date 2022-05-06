@@ -2,29 +2,40 @@ package com.example.cursach.authorization.validation;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class PasswordUsernameValidation implements Validator{
 
-
+    public static void main(String[] args) {
+        TreeMap<Integer, Integer> set = new TreeMap();
+        set.put(1, 1);
+        set.put(1, 1);
+        set.put(1, 1);
+        set.put(1, 1);
+        set.put(1, 1);
+        set.put(2, 2);
+        set.put(0, 2);
+        System.out.println(set.toString());
+    }
     @Override
     public boolean validate(Map<String, String[]> map, StringBuilder errorMsg) {
-        char[] forbidden = new char[33];
-        for(int i = 0; i < forbidden.length-1; i++){
-            forbidden[i] = (char)i;
-        }
-        forbidden[32] =(char) 38;
+        char[] allowedChars="~`!@#$%^&*()_-+={[}]|\\:;\"'<,>.?/ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmonpqrstuvwxyz"
+                .toCharArray();
+
+
         char[] username = map.get("username")[0].toCharArray();
         char[] password = map.get("password")[0].toCharArray();
         Arrays.sort(password);
         Arrays.sort(username);
         StringBuilder errorSymbols = new StringBuilder("Некоректні символи:");
-        for(char character: forbidden){
-        if(Arrays.binarySearch(username, character) > 0){
+        for(char character: allowedChars){
+        if(Arrays.binarySearch(username, character) < 0){
             errorSymbols.append(character).append(", ");
         }
         }
-        for(char character: forbidden){
-            if(Arrays.binarySearch(password, character) > 0){
+        for(char character: allowedChars){
+            if(Arrays.binarySearch(password, character) < 0){
                 errorSymbols.append(character).append(", ");
             }
         }

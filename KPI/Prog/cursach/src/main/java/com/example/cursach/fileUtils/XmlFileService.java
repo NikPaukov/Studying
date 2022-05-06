@@ -39,9 +39,8 @@ public class XmlFileService implements FileService {
 
     private boolean containsTag(String name, String value) throws ParserConfigurationException, IOException, SAXException {
             File file = new File(String.valueOf(path));
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse(file);
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+
             doc.getDocumentElement().normalize();
             NodeList nodeList = doc.getElementsByTagName("task");
             for (int itr = 0; itr < nodeList.getLength(); itr++) {
@@ -58,9 +57,7 @@ public class XmlFileService implements FileService {
     public List<String[]> readEntitiesTags() throws ParserConfigurationException, IOException, SAXException {
         List<String[]> tasks = new LinkedList<>();
             File file = new File(String.valueOf(path));
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse(file);
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
             doc.getDocumentElement().normalize();
 
             NodeList nodeList = doc.getElementsByTagName("task");
@@ -88,9 +85,8 @@ public class XmlFileService implements FileService {
 
     public int  delete(String name) throws IOException, ParserConfigurationException, SAXException {
             File file = new File(String.valueOf(path));
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse(file);
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+
             doc.getDocumentElement().normalize();
 
             NodeList nodeList = doc.getElementsByTagName("task");
@@ -107,7 +103,6 @@ public class XmlFileService implements FileService {
                         Files.write(path, lines);
                         return 1;
                     }
-                    System.out.println(itr);
                 }
             }
             return 0;

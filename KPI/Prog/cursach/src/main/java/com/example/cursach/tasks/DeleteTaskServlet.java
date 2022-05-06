@@ -34,7 +34,6 @@ public class DeleteTaskServlet extends HttpServlet {
         List<Validator> validators = List.of(new ParamNamesValidator(new String[]{"name"}),
                 new ParamExistenceValidator(), new TaskParamValidator());
         StringBuilder errorMsg = new StringBuilder();
-
         if(!AuthorizationUtils.validate(request.getParameterMap(), validators, errorMsg)){
             request.setAttribute("error", errorMsg.toString());
             request.getRequestDispatcher("/WEB-INF/jsp/tasks.jsp").forward(request, response);
@@ -42,9 +41,8 @@ public class DeleteTaskServlet extends HttpServlet {
         }
 
 
-
-        try{
         XmlFileService xml = new XmlFileService(filename);
+        try{
         int sc = xml.delete(name);
             if(sc==0){
                 request.setAttribute("error", "Задача з таким ім'ям не знайдена");

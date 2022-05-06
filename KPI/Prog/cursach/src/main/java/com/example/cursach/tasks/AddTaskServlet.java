@@ -43,14 +43,12 @@ public class AddTaskServlet extends HttpServlet {
         XmlFileService xml = new XmlFileService(filename);
 
 
-
+        //creating task
         Task task = new Task(request.getParameter("name"), request.getParameter("priority"),
                 request.getParameter("date") + " " + request.getParameter("time"));
 
         try {
             xml.write(task.toXml());
-
-            List<Task> e = Task.convertXMLListtoTaskList(xml.readEntitiesTags());
             request.setAttribute("tasks", Task.convertXMLListtoTaskList(xml.readEntitiesTags()));
             request.getRequestDispatcher("/WEB-INF/jsp/tasks.jsp").forward(request, response);
         }catch (Exception e){

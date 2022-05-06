@@ -1,0 +1,18 @@
+<tasks>
+
+    <task>
+        <name>2</name>
+        <priority>2</priority>
+        <duration>2</duration>
+    </task>
+
+
+    <task>
+        <name>1</name>
+        <priority>1</priority>
+        <duration>1</duration>
+    </task>
+
+
+
+</tasks>

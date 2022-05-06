@@ -1,0 +1,127 @@
+body{
+    width: 100%;
+    height: 100%;
+
+    display: flex;  
+}
+.darker{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(225, 225, 225, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-menu{
+    width: 40%;
+    height: 70%;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius:4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.login-form{
+    width: 90%;
+    flex-basis: 70%;
+    display: flex;
+    flex-direction: column;    
+}
+.login-form fieldset legend{
+    text-align: center;
+    font-size: 200%;
+}
+.login-form fieldset{
+    display: flex;
+    border: none;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10%;
+}
+
+.login-form>fieldset>input{
+    margin-bottom: 3%;
+    width: 60%;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    text-align: center;
+    border: 0.5px solid black;
+    font-size: 120%;
+        display: flex;
+    border-radius: 4em;
+}
+.buttons{
+    margin-top: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+.buttons button{
+    height: 30px;
+    width: 60%;
+    margin-bottom: 3%;
+    background-color: lightblue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 120%;
+  
+    border: none;
+    border-radius: 1em;
+    color: rgb(50, 50, 50);
+    transition: 0.5s;
+}
+
+.buttons button:hover{
+    font-size: 150%;
+    margin-bottom: 3%;
+
+}
+.buttons a:visited{
+    color: rgb(50, 50, 50);
+}
+.buttons a{
+    margin-top: 3%;
+    transition: 1s;
+}
+.buttons a:hover{
+    background-color: lightblue;
+    border-radius: 1em;
+}
+h1{
+    font-size: 200%;
+    margin-bottom: 10%;
+}
+
+#errorMsg{
+    opacity: 0;
+    margin-top: 5%;
+    color: red;
+    align-self: center;
+    font-size: 150%;
+
+}
+@media screen and (max-width:1000px) {
+    
+    .login-menu{width: 80%;
+    height:40%;}
+    #errorMsg{
+        font-size: 100%;
+    }
+}
+.show-anim{
+    animation:show-anim 1s linear;
+}
+
+.show-anim-delay{
+    animation:show-anim 1s linear;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes show-anim {
+    0%{opacity: 0;}
+    100%{
+        opacity: 1;
+    }
+}

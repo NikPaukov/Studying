@@ -24,7 +24,7 @@ public class SingUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         char[] username = request.getParameter("username").toCharArray();
         char[] password = request.getParameter("password").toCharArray();
-        String encryptedPassword = AuthorizationUtils.PasswordEncrypter(new String(password));
+        String encryptedPassword = AuthorizationUtils.passwordEncrypter(new String(password));
         //Validation
         String[] paramNames = new String[]{"username", "password"};
         StringBuilder errorMsg = new StringBuilder("");

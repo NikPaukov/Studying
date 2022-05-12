@@ -4,8 +4,6 @@ import com.example.cursach.authorization.validation.Validator;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchAlgorithmException;
-import java.security.MessageDigest;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +11,7 @@ public class AuthorizationUtils {
 
 
     /* Driver Code */
-    public static String PasswordEncrypter(String password) {
+    public static String passwordEncrypter(String password) {
         String encryptedpassword = null;
         try {
             /* MessageDigest instance for MD5. */

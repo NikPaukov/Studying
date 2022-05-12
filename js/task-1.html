@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+<style>
+    p{
+        word-break: break-all;
+        width: 30%;
+    }
+</style>
+
 <script>
     
 function toAnonym(text) {
@@ -15,11 +22,23 @@ function toAnonym(text) {
     }
     return textArr.join(" ");
 }
-    const inpText = `Highly recommend you to read at least one work of Shakespeare. He made his masterpieces for hundreds of years before London, Dickens and Fitzgerald. Hope to buy last book to my collection it 2022, and read it.`
+   
+</script>
+
+<script>
+     const inpText = `Highly recommend you to read at least one work of Shakespeare. He made his masterpieces for hundreds of years before London, Dickens and Fitzgerald. Hope to buy last book to my collection it 2022, and read it.`
     console.log(toAnonym(inpText));
+    function getParsed(textId, outId) {
+        const text = document.getElementById(textId).value;
+        document.getElementById(outId).textContent = toAnonym(text);
+    }
 </script>
     </head>
     <body>
-
+        <form>
+            <textarea name="text" id="text" cols="80" rows="10"></textarea>
+            <button type="button" onclick="getParsed('text', 'res')">Transfer</button>
+        </form>
+        <p id="res"></p>
     </body>
 </html>

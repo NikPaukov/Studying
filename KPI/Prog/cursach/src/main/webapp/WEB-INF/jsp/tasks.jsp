@@ -12,11 +12,11 @@
 
     <title>Log In</title>
 </head>
-<div id="darked"class>${error}</div>
+<div id="darked"></div>
 <body>
 <main>
     <h1>Планувальник задач</h1>
-    <p id="errorMsg"></p>
+    <p id="errorMsg">${error}</p>
     <div class="buttons">
         <button id="add" type="button" onclick="showForm('add-form')">Add</button>
         <button id="delete" type="button" onclick="showForm('delete-form')">Delete</button>
@@ -46,27 +46,27 @@
     </table>
 </main>
 
-<form style="display: none" id="add-form" action="add" class="tasks-form">
+<form style="display: none" id="add-form" action="add" method="post" class="tasks-form">
     <button type="button" id="add-close" class="close" onclick="hidForm('add-form')">X</button>
     <input required type="text" name="name" placeholder="Name">
-    <input required type="number" min="0" max="10" placeholder="Priority(1-10)">
-    <input required type="datetime" placeholder="Time">
-    <button class="submit"type="submit">Add Task</button>
+    <input required type="number" name="priority" min="0" max="10" placeholder="Priority(1-10)">
+    <input required type="datetime-local" name="duration" placeholder="Time">
+    <button class="submit" type="submit">Add Task</button>
 </form>
 
-<form style="display: none;" id="delete-form" action="delete" class="tasks-form">
+<form style="display: none;" id="delete-form" action="delete" method="post" class="tasks-form">
     <button type="button" id="delete-close" class="close" onclick="hidForm('delete-form')">X</button>
     <input required type="text" name="name" placeholder="Name">
-
     <button class="submit"type="submit">Delete Task</button>
 </form>
-<form style="display: none" id="redact-form" action="redact" class="tasks-form">
+
+<form style="display: none" id="redact-form" action="redact" method="post" class="tasks-form">
     <button type="button" id="redact-close" class="close" onclick="hidForm('redact-form')">X</button>
     <input required type="text" name="oldName" placeholder="Old name">
     <input required type="text" name="name" placeholder="New name">
-    <input required type="number" min="0" max="10" placeholder="Priority(1-10)">
-    <input required type="datetime" placeholder="Time">
-    <button class="submit"type="submit">Add</button>
+    <input required type="number" name="priority" min="0" max="10" placeholder="Priority(1-10)">
+    <input required type="datetime-local" name="duration "placeholder="Time">
+    <button class="submit" type="submit">Redact</button>
 </form>
 
 

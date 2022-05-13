@@ -11,7 +11,7 @@ public class NumberOfParamsValidator implements Validator {
 
     public boolean validate(Map<String, String[]> map,     StringBuilder errorMsg) {
         if (map.size() != number) {
-            errorMsg.append("Неочікувана кількість параметрів\n");
+            errorMsg.append("Unexpected number of params\n");
             return false;
         }
         return true;

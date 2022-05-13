@@ -17,7 +17,7 @@ public class ParamExistenceValidator implements Validator{
             }
         }
         if(!valid){
-            errorMsg.append("Задані пусті параметри:").append(errorParams.toString()).append("\n");
+            errorMsg.append("empty params:").append(errorParams.toString()).append("\n");
             return false;
         }
         return true;

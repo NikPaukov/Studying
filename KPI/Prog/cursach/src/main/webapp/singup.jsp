@@ -17,7 +17,7 @@
         <form class="login-form" method="post" action="singup"  id="login">
             <fieldset>
                 <legend>Sing Up</legend>
-            <input required type="text" name="username" minlength="6" max="16" placeholder="username">
+            <input required type="text" name="username" minlength="6" max="16" placeholder="Username">
             <input required type="password" name="password"  minlength="6"  placeholder="Password">
         </fieldset>
         <div class="buttons">

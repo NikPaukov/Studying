@@ -19,7 +19,7 @@ public class ParamNamesValidator implements Validator{
                     errorParams.add(name);}
             }
             if(errorParams.size()!=0){
-                errorMsg.append("Відсутні параметри: ").append(errorParams).append("\n");
+                errorMsg.append("Params are absent: ").append(errorParams).append("\n");
                 return false;
             }
             return true;

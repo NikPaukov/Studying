@@ -23,7 +23,6 @@ public class DeleteTaskServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String name = request.getParameter("name");
         String filename = (String) request.getSession().getAttribute("filename");
         if(filename==null){
             request.setAttribute("error", "З початку треба авторізуватися!");
@@ -40,6 +39,7 @@ public class DeleteTaskServlet extends HttpServlet {
             return;
         }
 
+        String name = request.getParameter("name");
 
         XmlFileService xml = new XmlFileService(filename);
         try{

@@ -8,7 +8,7 @@ public class TaskParamValidator implements Validator{
     public boolean validate(Map<String, String[]> map, StringBuilder errorMsg) {
         for(String key: map.keySet()){
             if(map.get(key)[0].matches("<.*>")){
-                errorMsg.append("Не можна використовувати XML-теги:").append(key);
+                errorMsg.append("Don`t use XML tags:").append(key);
                 return false;
             }
         }

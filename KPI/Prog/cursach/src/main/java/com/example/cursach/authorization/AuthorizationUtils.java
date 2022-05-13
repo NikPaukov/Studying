@@ -28,7 +28,6 @@ public class AuthorizationUtils {
             /* Complete hashed password in hexadecimal format */
             encryptedpassword = s.toString();
         } catch (NoSuchAlgorithmException e) {
-            System.out.println(1);
             return e.getMessage();
         }
 

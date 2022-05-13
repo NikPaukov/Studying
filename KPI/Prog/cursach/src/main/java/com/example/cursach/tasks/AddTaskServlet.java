@@ -29,7 +29,7 @@ public class AddTaskServlet extends HttpServlet {
 
         //Validation
         List<Validator> validators = List.of(
-                new ParamNamesValidator(new String[]{"name", "priority", "date", "time"}),
+                new ParamNamesValidator(new String[]{"name", "priority", "datetime"}),
                 new ParamExistenceValidator(), new TaskParamValidator());
         StringBuilder errorMsg = new StringBuilder();
 
@@ -45,7 +45,7 @@ public class AddTaskServlet extends HttpServlet {
 
         //creating task
         Task task = new Task(request.getParameter("name"), request.getParameter("priority"),
-                request.getParameter("date") + " " + request.getParameter("time"));
+                request.getParameter("duration"));
 
         try {
             xml.write(task.toXml());

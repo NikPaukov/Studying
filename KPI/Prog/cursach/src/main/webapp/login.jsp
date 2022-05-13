@@ -17,12 +17,12 @@
         <form class="login-form" action="login" method="post" id="login">
             <fieldset>
                 <legend>Log In</legend>
-            <input required type="text" name="username" placeholder="username">
+            <input required type="text" name="username" placeholder="Username">
             <input required type="password" name="password" placeholder="Password">
         </fieldset>
         <div class="buttons">
             <button type="submit" class="main-btn">Log in</button>
-            <p>or go to <a class="secondary-btn" href="signup.jsp">Sing up</a></p>
+            <p>or go to <a class="secondary-btn" href="singup.jsp">Sign up</a></p>
         </div>
             <p id="errorMsg" class="show-anim-delay">${error}</p>
 

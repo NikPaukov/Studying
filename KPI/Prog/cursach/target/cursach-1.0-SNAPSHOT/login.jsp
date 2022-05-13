@@ -22,7 +22,7 @@
         </fieldset>
         <div class="buttons">
             <button type="submit" class="main-btn">Log in</button>
-            <p>or go to <a class="secondary-btn" href="signup.jsp">Sing up</a></p>
+            <p>or go to <a class="secondary-btn" href="singup.jsp">Sing up</a></p>
         </div>
             <p id="errorMsg" class="show-anim-delay">${error}</p>
 

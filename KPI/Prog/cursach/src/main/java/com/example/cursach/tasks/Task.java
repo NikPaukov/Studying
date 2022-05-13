@@ -22,9 +22,6 @@ public class Task {
     private final String duration;
 
 
-    public static void main(String[] args) {
-        String x = new Task("12", "34", "56").toXml();
-    }
     public Task(String name, String priority, String duration) {
         this.name = name.trim();
         this.priority = priority.trim();

@@ -19,9 +19,7 @@ public class LogInServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        char[] username = request.getParameter("username").toCharArray();
-        char[] password = request.getParameter("password").toCharArray();
-        String encryptedPassword = AuthorizationUtils.passwordEncrypter(new String(password));
+
         //Validation
         StringBuilder errorMsg = new StringBuilder("");
         List<Validator> validators = List.of(new ParamExistenceValidator(),
@@ -32,6 +30,10 @@ public class LogInServlet extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
+
+        char[] username = request.getParameter("username").toCharArray();
+        char[] password = request.getParameter("password").toCharArray();
+        String encryptedPassword = AuthorizationUtils.passwordEncrypter(new String(password));
 
 
         String filename = new String(username) + '&' + encryptedPassword;

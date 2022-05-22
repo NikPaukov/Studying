@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" th:href="@{/css/NEW/reset.css}">
+        <link rel="stylesheet" th:href="@{/css/NEW/style.css}">
+        <link rel="stylesheet" th:href="@{/css/NEW/nav.css}">
+        <link rel="stylesheet" th:href="@{/css/NEW/login.css}">
+
+<title>Реєстрація</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <main>
+            <nav>
+                <img th:src="@{/imgs/icon.svg.png}">
+
+                <a href="/tasks/all">Всі</a>
+                <a href="/tasks/today">Сьогодні</a>
+                <a href="/tasks/tomorrow">Завтра</a>
+                <a href="/tasks/choosedate">Обрати дату</a>
+                <a href="/tasks/this-month">Цей місяць</a>
+
+                <button onclick="dropDown()" class="show-nav"></button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/tasks/all">Всі</a>
+                    <a href="/tasks/today">Сьогодні</a>
+                    <a href="/tasks/tomorrow">Завтра</a>
+                    <a href="/tasks/choosedate">Обрати дату</a>
+                    <a href="/tasks/this-month">Цей місяць</a>
+
+                </div>
+            </nav>
+<div class="content">
+            <form class="register-form"> 
+                
+                <p style="margin-bottom: 20px">Створити акаунт</p>
+
+                <label for="username">Ім'я користувача:</label>
+                <input id ="username"type="text" name="password" placeholder="user">
+                <label for="password">Пароль:</label>
+                <input type="password" name="password" placeholder="***********">
+                <button>Створити</button>
+            </form>
+
+
+        </div>
+        </main>
+    </body>
+</html>

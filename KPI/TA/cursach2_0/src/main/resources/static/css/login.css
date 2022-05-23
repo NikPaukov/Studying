@@ -6,9 +6,7 @@ main{
     flex-direction: column;
     align-items: center;
 }
-nav{
-    font-size: 80%;
-}
+
 .content{
     width: 100%;
     display: flex;
@@ -18,8 +16,8 @@ nav{
     margin: 20% 0 30% 0;
     display: flex;
     flex-direction: column;
-    width: 30%;
-    font-size: 140%;
+    width: 50%;
+    font-size: 200%;
 
 }
 .register-form>*{

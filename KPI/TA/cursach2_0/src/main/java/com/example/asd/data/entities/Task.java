@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name="tasks")
@@ -12,6 +13,8 @@ public class Task {
     @Column
     private String name;
 
+    @Column
+    private String userid;
     @Column
     private int priority;
 
@@ -21,35 +24,66 @@ public class Task {
     private int month;
     @Column
     private int day;
-    @Column
-    private String time;
-    @Column
-    private String date;
-    @Column
-    private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
-    public void setId(Long id) {
-        this.id = id;
+
+    public Task(String name, String userid, int priority, int year, int month, int day, String time) {
+        this.name = name;
+        this.userid = userid;
+        this.priority = priority;
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        this.time = time;
+        this.date=String.format("%s-%s-%s", year, month>9?String.valueOf(month):"0"+String.valueOf(month),
+                day>9?String.valueOf(day):"0"+String.valueOf(day));    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "name='" + name + '\'' +
+                ", userid='" + userid + '\'' +
+                ", priority=" + priority +
+                ", year=" + year +
+                ", month=" + month +
+                ", day=" + day +
+                ", time='" + time + '\'' +
+                ", date='" + date + '\'' +
+                ", id=" + id +
+                '}';
     }
 
-    public Long getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return priority == task.priority && year == task.year && month == task.month && day == task.day && Objects.equals(name, task.name) && Objects.equals(userid, task.userid) && Objects.equals(time, task.time) && Objects.equals(date, task.date) && Objects.equals(id, task.id);
+    }
+
+    public Task() {
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
     public void setPriority(int priority) {
         this.priority = priority;
-    }
-
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 
     public int getYear() {
@@ -76,6 +110,14 @@ public class Task {
         this.day = day;
     }
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     public String getDate() {
         return date;
     }
@@ -84,28 +126,19 @@ public class Task {
         this.date = date;
     }
 
-    public Task(String name, int priority, int year, int month, int day, String time) {
-        this.name = name;
-        this.priority = priority;
-        this.year = year;
-        this.month = month;
-        this.day = day;
-        this.time = time;
-        this.date=String.format("%s-%s-%s", year, month>9?String.valueOf(month):"0"+String.valueOf(month),
-                day>9?String.valueOf(day):"0"+String.valueOf(day));
+    public Long getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public int getPriority() {
-        return priority;
-    }
+    @Column
+    private String time;
+    @Column
+    private String date;
+    @Column
+    private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
 
-
-
-    public Task() {
-
-    }
 }

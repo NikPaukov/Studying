@@ -13,21 +13,23 @@
     <body>
         <main>
             <nav>
+                <button onclick="dropDown()" class="show-nav"></button>
+                <p class="logout-a" th:text="${user}"></p>
                 <img th:src="@{/imgs/icon.svg.png}">
-
                 <a href="/tasks/all">Всі</a>
                 <a href="/tasks/today">Сьогодні</a>
                 <a href="/tasks/tomorrow">Завтра</a>
                 <a href="/tasks/choosedate">Обрати дату</a>
                 <a href="/tasks/this-month">Цей місяць</a>
+                <button class="logout-img" onclick="window.location.href='/logout'" th:src="@{/imgs/logout-white.png}"></button>
 
-                <button onclick="dropDown()" class="show-nav"></button>
                 <div id="myDropdown" class="dropdown-content">
                     <a href="/tasks/all">Всі</a>
                     <a href="/tasks/today">Сьогодні</a>
                     <a href="/tasks/tomorrow">Завтра</a>
                     <a href="/tasks/choosedate">Обрати дату</a>
                     <a href="/tasks/this-month">Цей місяць</a>
+                    <a href="/logout">Вийти</a>
 
                 </div>
             </nav>
@@ -43,7 +45,7 @@
                     <input type="date" id = "fulldate" required>
                     </div>
                     <button type="submit" onclick="
-                    document.getElementById('choose-full-date-form').action=`tasks/${document.getElementById('fulldate').value}`
+                    document.getElementById('choose-full-date-form').action=`/tasks/${document.getElementById('fulldate').value}`
                     ">Обрати дату</button>
                 </form>
                 <form id="choose-ym-date-form">
@@ -72,7 +74,7 @@
                         <div class="input">
                         <input type="number" value="2022" min="2022" max="2030" id ="year2" required>
                         </div>
-                        <button type="submit" onclick="document.getElementById('choose-y-date-form').action=`tasks/${document.getElementById('year1').value}`">
+                        <button type="submit" onclick="document.getElementById('choose-y-date-form').action=`/tasks/${document.getElementById('year2').value}`">
                             Обрати рік</button>
                     </form>
             

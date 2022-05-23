@@ -121,25 +121,28 @@
 </form>
 <main>
     <nav>
+        <button onclick="dropDown()" class="show-nav"></button>
+        <p class="logout-a" th:text="${user}" >user1</p>
         <img th:src="@{/imgs/icon.svg.png}">
-
         <a href="/tasks/all">Всі</a>
         <a href="/tasks/today">Сьогодні</a>
         <a href="/tasks/tomorrow">Завтра</a>
         <a href="/tasks/choosedate">Обрати дату</a>
         <a href="/tasks/this-month">Цей місяць</a>
+        <button class="logout-img" onclick="window.location.href='/logout'" th:src="@{/imgs/logout-white.png}"></button>
 
-        <button onclick="dropDown()" class="show-nav"></button>
         <div id="myDropdown" class="dropdown-content">
             <a href="/tasks/all">Всі</a>
             <a href="/tasks/today">Сьогодні</a>
             <a href="/tasks/tomorrow">Завтра</a>
             <a href="/tasks/choosedate">Обрати дату</a>
             <a href="/tasks/this-month">Цей місяць</a>
+            <a href="/logout">Вийти</a>
 
         </div>
     </nav>
     <header>
+        <p class="error" th:text="${param.error}"></p>
         <h1 th:if="${date} == 'all'">Усі задачі:</h1>
         <h1 th:unless="${date} == 'all'">
             Задачі на
@@ -149,6 +152,7 @@
         <hr>
         <form class="add-form" method="post">
             <div class="input">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <input required type="text" name="name" placeholder="Назва">
                 <input required type="number" min="0" max="5" name="priority" placeholder="Пріорітет">
                 <div>
@@ -181,7 +185,7 @@
                 </td>
             </tr>
             <th:block th:if="${not #lists.isEmpty(tasks)}">
-                <tr th:each="task : ${tasks}">
+                <tr  th:each="task : ${tasks}">
                     <td th:text="${task.name}" class="item"></td>
                     <td th:text="${task.priority}" class="item"></td>
                     <td th:utext="${task.date} + '<br>' + ${task.time}" class="item"></td>

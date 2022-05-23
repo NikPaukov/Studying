@@ -20,7 +20,7 @@ function getMonthLink(yearId, selId){
     let select = document.getElementById(selId);
     let value = getMonth(select.options[select.selectedIndex].value);
 
-    return `tasks/${document.getElementById(yearId).value}-${value}`
+    return `/tasks/${document.getElementById(yearId).value}-${value}`
 }
 function thisMonth(){
     let date = new Date();

@@ -16,23 +16,23 @@ TaskRepository taskRepository;
         this.taskRepository = taskRepository;
     }
 
-    public List<Task> readAll(){
-        return taskRepository.findAll();
+    public List<Task> readAll(String userid){
+        return taskRepository.findAllByUserid(userid);
     }
-    public Optional<Task> readById(Long id){
-        return taskRepository.findById(id);
+    public Optional<Task> readById(String userid, Long id){
+        return taskRepository.findByUseridAndId(userid, id);
     }
-    public List<Task> readByYearAndMonth(String year, String month){
-        return taskRepository.findAllByYearAndMonth(Integer.parseInt(year), Integer.parseInt(month));
+    public List<Task> readByYearAndMonth(String userid, String year, String month){
+        return taskRepository.findAllByUseridAndYearAndMonth(userid, Integer.parseInt(year), Integer.parseInt(month));
     }
-    public List<Task> readByYear(int year){
-        return taskRepository.findAllByYear(year);
+    public List<Task> readByYear(String userid, int year){
+        return taskRepository.findAllByUseridAndYear(userid, year);
     }
-    public Task update(Long id, String name, int priority, String date, String time){
+    public Task update(String userid, Long id, String name, int priority, String date, String time){
         int[] split = Arrays.stream(date.split("-")).mapToInt(Integer::parseInt).toArray();
 
-        if (readById(id).isPresent()) {
-            readById(id).map(task -> {
+        if (readById(userid, id).isPresent()) {
+            readById(userid, id).map(task -> {
                 task.setName(name);
                 task.setPriority(priority);
                 task.setYear(split[0]);
@@ -44,24 +44,24 @@ TaskRepository taskRepository;
                 task.setTime(time);
                 return create(task);
             });
-            return readById(id).get();
+            return readById(userid, id).get();
         }
         else {
-            Task newTask = new Task(name, priority, split[0], split[1], split[2], time);
+            Task newTask = new Task(name,userid, priority, split[0], split[1], split[2], time);
             newTask.setId(id);
             return create(newTask);
         }
     }
-    public List<Task> readAllByDate(String date){
-        return  taskRepository.findAllByDate(date);
+    public List<Task> readAllByDate(String userid, String date){
+        return  taskRepository.findAllByUseridAndDate(userid, date);
     }
     public Task create(Task task){
         return taskRepository.save(task);
     }
-    public Task create(String name, int priority, String date, String time) {
+    public Task create(String userid, String name, int priority, String date, String time) {
 
         int[] splitTaskDate = Arrays.stream(date.split("-")).mapToInt(Integer::parseInt).toArray();
-        return  taskRepository.save(new Task(name, priority, splitTaskDate[0], splitTaskDate[1],
+        return  taskRepository.save(new Task(name,userid, priority, splitTaskDate[0], splitTaskDate[1],
                 splitTaskDate[2], time));
     }
     public void delete(Task task){

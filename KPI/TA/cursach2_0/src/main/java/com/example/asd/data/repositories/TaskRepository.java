@@ -5,10 +5,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
-    List<Task> findAllByDate(String Date);
-    List<Task> findAllByYearAndMonth(int year,int month);
-    List<Task> findAllByYear(int year);
+    List<Task> findAllByUseridAndDate(String userid, String date);
+    List<Task> findAllByUseridAndYearAndMonth(String userid, int year, int month);
+    List<Task> findAllByUseridAndYear(String userid, int year);
+    List<Task> findAllByUserid(String userid);
+    Optional<Task> findByUseridAndId(String userid, Long id);
 }

@@ -50,19 +50,16 @@ public class DateUtils {
 
     public static String getToday() {
         LocalDate x = LocalDate.now();
-        String z = String.format("%s-%s-%s", x.getYear(), x.getMonth().getValue() > 9 ? x.getMonth().getValue() : "0" + x.getMonth().getValue(),
+        return String.format("%s-%s-%s", x.getYear(), x.getMonth().getValue() > 9 ? x.getMonth().getValue() : "0" + x.getMonth().getValue(),
                 x.getDayOfMonth() > 9 ? x.getDayOfMonth() : "0" + x.getDayOfMonth());
-        System.out.println(z);
-        return z;
+
     }
 
     public static String getTomorrow() {
         LocalDate x = LocalDate.now();
         LocalDate y = LocalDate.of(x.getYear(), x.getMonthValue(), x.getDayOfMonth() + 1);
-        String z= String.format("%s-%s-%s", y.getYear(), y.getMonthValue() > 9 ? y.getMonthValue() : "0" + y.getMonthValue(),
+        return String.format("%s-%s-%s", y.getYear(), y.getMonthValue() > 9 ? y.getMonthValue() : "0" + y.getMonthValue(),
                 y.getDayOfMonth() > 9 ? y.getDayOfMonth() : "0" + y.getDayOfMonth());
-        System.out.println(z);
-        return z;
     }
 
     public static String[] getThisMonth() {

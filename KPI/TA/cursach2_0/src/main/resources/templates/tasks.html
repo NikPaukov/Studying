@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" th:href="@{/css/reset.css}">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-    <link rel="stylesheet" th:href="@{/css/nav.css}">
-    <link rel="stylesheet" th:href="@{/css/tasks.css}">
+    <link rel="stylesheet"href="../static/css/reset.css"  th:href="@{/css/reset.css}">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="../static/css/nav.css" th:href="@{/css/nav.css}">
+    <link rel="stylesheet"  href="../static/css/tasks.css"th:href="@{/css/tasks.css}">
     <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
     <script th:src="@{/js/nav.js}"></script>
     <script th:src="@{/js/pop-up-form.js}"></script>
@@ -111,18 +111,18 @@
 <form class="pop-up-form" id="redact-form"   th:action="@{/tasks/{id}/r(id=${date})}" method="post">
     <input type="hidden" name="id" id="redact-form-id">
     <button type="button" class="close" onclick="hidForm('redact-form')">X</button>
-    <input type="text" name="name" placeholder="Назва">
-    <input type="number" min="0" max="5" name="priority" placeholder="Пріорітет">
+    <input id="redact-form-name" type="text" name="name" placeholder="Назва">
+    <input id="redact-form-priority" type="number" min="0" max="5" name="priority" placeholder="Пріорітет">
     <div>
-        <input type="date" name="date">
-        <input type="time" name="time">
+        <input id="redact-form-date" pattern="yyyy-mm-dd" type="date" name="date">
+        <input id="redact-form-time" type="time" name="time">
     </div>
     <button type="submit" class="submit">Редагувати</button>
 </form>
 <main>
     <nav>
         <button onclick="dropDown()" class="show-nav"></button>
-        <p class="logout-a" th:text="${user}" >user1</p>
+        <p class="logout-a" th:text="${user}" >VIKTORBERYNDA</p>
         <img th:src="@{/imgs/icon.svg.png}">
         <a href="/tasks/all">Всі</a>
         <a href="/tasks/today">Сьогодні</a>
@@ -146,8 +146,12 @@
         <h1 th:if="${date} == 'all'">Усі задачі:</h1>
         <h1 th:unless="${date} == 'all'">
             Задачі на
-            <span th:unless="${date}=='this-month'" th:text="${date}"></span>
+
+            <span th:if="${dateUnformat}=='today'">сьогодні</span>
+            <span th:if="${dateUnformat}=='tomorrow'">завтра</span>
             <span th:if="${date}=='this-month'">цей місяць</span>
+            <span th:unless="${dateUnformat}=='today' or ${dateUnformat}=='tomorrow'or ${date}=='this-month'"
+                  th:text="date"></span>
         </h1>
         <hr>
         <form class="add-form" method="post">
@@ -186,9 +190,9 @@
             </tr>
             <th:block th:if="${not #lists.isEmpty(tasks)}">
                 <tr  th:each="task : ${tasks}">
-                    <td th:text="${task.name}" class="item"></td>
-                    <td th:text="${task.priority}" class="item"></td>
-                    <td th:utext="${task.date} + '<br>' + ${task.time}" class="item"></td>
+                    <td th:id="${task.id}+name" th:text="${task.name}" class="item"></td>
+                    <td th:id="${task.id}+priority" th:text="${task.priority}" class="item"></td>
+                    <td th:id="${task.id}+datetime" th:utext="${task.date} + '<br>' + ${task.time}" class="item"></td>
                     <td class="item buttons-class">
                         <div class="buttons">
                             <form th:action="@{/tasks/{id}/d(id=${date})}" method="post">
@@ -196,7 +200,7 @@
                                 <button class="delete" type="submit"></button>
                             </form>
                             <button id="redact" class="redact" type="button"
-                                    th:onclick="|showForm('redact-form', '${task.id}  ')|"></button>
+                                    th:onclick="|showForm('redact-form', '${task.id}')|"></button>
                         </div>
                     </td>
                 </tr>

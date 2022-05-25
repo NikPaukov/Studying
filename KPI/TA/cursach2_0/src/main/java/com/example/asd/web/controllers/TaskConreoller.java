@@ -23,10 +23,14 @@ public class TaskConreoller {
     private void addDate(Model model, String taskDate) {
         if (taskDate.equals("today")) {
             model.addAttribute("date", DateUtils.getToday());
+            model.addAttribute("dateUnformat", "today");
         } else if (taskDate.equals("tomorrow")) {
             model.addAttribute("date", DateUtils.getTomorrow());
+            model.addAttribute("dateUnformat", "tomorrow");
         } else {
             model.addAttribute("date", taskDate);
+            model.addAttribute("dateUnformat", taskDate);
+
         }
 
     }

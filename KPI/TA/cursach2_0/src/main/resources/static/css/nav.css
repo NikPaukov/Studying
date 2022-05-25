@@ -8,11 +8,12 @@ nav{
     align-items: center;
       justify-content: flex-start;
     background-color: #333;
+    flex-wrap: wrap;
 }
 nav  a,nav p {
     color: #f2f2f2;
     text-align: center;
-    padding: 0.8em 1em;
+    padding: 0.8em 0.5em;
     text-decoration: none;
     font-size: 120%;
   }
@@ -32,7 +33,7 @@ nav img{
 .logout-img{
     margin-left: auto;
     height: 3rem;
-    width: 3rem;
+    flex-basis: 3rem;
     margin-right: 3rem;
     background-color: transparent;
     border: none;
@@ -41,7 +42,7 @@ nav img{
 }
 .logout-img:hover{
     background-color: #f2f2f2;
-    background-image: url("../imgs/logout-black.png");
+    background-image: url(../imgs/logout-black.png);
 }
 
 
@@ -76,6 +77,12 @@ flex-direction: column;}
     nav>a, nav img{
         display: none;
     }
+    nav a, nav p{
+        font-size: 100%;
+    }
+    .logout-img{
+        margin-right: 0;
+    }
     nav{
         margin: 0;
         height: 3rem;
@@ -92,4 +99,11 @@ flex-direction: column;}
       font-size: 60%;
     }
 }
-  
+@media screen and (max-width:1250px) {
+    nav a, nav p{
+      padding: 0.8 0;
+    }
+    .logout-img{
+      margin-right: 0;
+    }
+}

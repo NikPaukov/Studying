@@ -14,7 +14,7 @@ public class Task {
     private String name;
 
     @Column
-    private String userid;
+    private String username;
     @Column
     private int priority;
 
@@ -27,7 +27,7 @@ public class Task {
 
     public Task(String name, String userid, int priority, int year, int month, int day, String time) {
         this.name = name;
-        this.userid = userid;
+        this.username = userid;
         this.priority = priority;
         this.year = year;
         this.month = month;
@@ -40,7 +40,7 @@ public class Task {
     public String toString() {
         return "Task{" +
                 "name='" + name + '\'' +
-                ", userid='" + userid + '\'' +
+                ", userid='" + username + '\'' +
                 ", priority=" + priority +
                 ", year=" + year +
                 ", month=" + month +
@@ -56,7 +56,9 @@ public class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return priority == task.priority && year == task.year && month == task.month && day == task.day && Objects.equals(name, task.name) && Objects.equals(userid, task.userid) && Objects.equals(time, task.time) && Objects.equals(date, task.date) && Objects.equals(id, task.id);
+        return priority == task.priority && year == task.year && month == task.month && day == task.day &&
+                Objects.equals(name, task.name) && Objects.equals(username, task.username) &&
+                Objects.equals(time, task.time) && Objects.equals(date, task.date) && Objects.equals(id, task.id);
     }
 
     public Task() {
@@ -71,11 +73,11 @@ public class Task {
     }
 
     public String getUserid() {
-        return userid;
+        return username;
     }
 
     public void setUserid(String userid) {
-        this.userid = userid;
+        this.username = userid;
     }
 
     public int getPriority() {

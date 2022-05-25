@@ -4,6 +4,7 @@ import com.example.asd.data.entities.User;
 import com.example.asd.data.repositories.UserRepository;
 import com.example.asd.exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,8 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,14 +31,15 @@ public class AuthController {
         model.addAttribute("user", new User());
         return "signup";
     }
+
     @GetMapping("/login")
-    public String getLoginForm(){
+    public String getLoginForm() {
         return "login";
     }
 
     @PostMapping("/process_register")
     public RedirectView processRegister(User user) {
-        if(userRepo.existsByUsername(user.getUsername())){
+        if (userRepo.existsByUsername(user.getUsername())) {
             throw new UserAlreadyExistsException(user.getUsername());
         }
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -46,12 +50,15 @@ public class AuthController {
 
         return new RedirectView("/login");
     }
-    @GetMapping(value="/logout")
-    public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+
+    @GetMapping(value = "/logout")
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){
+        if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/login?logout"; //You can redirect wherever you want, but generally it's a good practice to show login screen again.
     }
+
+
 }

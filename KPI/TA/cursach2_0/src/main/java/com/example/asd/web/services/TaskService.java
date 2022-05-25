@@ -17,16 +17,16 @@ TaskRepository taskRepository;
     }
 
     public List<Task> readAll(String userid){
-        return taskRepository.findAllByUserid(userid);
+        return taskRepository.findAllByUsername(userid);
     }
     public Optional<Task> readById(String userid, Long id){
-        return taskRepository.findByUseridAndId(userid, id);
+        return taskRepository.findByUsernameAndId(userid, id);
     }
     public List<Task> readByYearAndMonth(String userid, String year, String month){
-        return taskRepository.findAllByUseridAndYearAndMonth(userid, Integer.parseInt(year), Integer.parseInt(month));
+        return taskRepository.findAllByUsernameAndYearAndMonth(userid, Integer.parseInt(year), Integer.parseInt(month));
     }
     public List<Task> readByYear(String userid, int year){
-        return taskRepository.findAllByUseridAndYear(userid, year);
+        return taskRepository.findAllByUsernameAndYear(userid, year);
     }
     public Task update(String userid, Long id, String name, int priority, String date, String time){
         int[] split = Arrays.stream(date.split("-")).mapToInt(Integer::parseInt).toArray();
@@ -53,7 +53,7 @@ TaskRepository taskRepository;
         }
     }
     public List<Task> readAllByDate(String userid, String date){
-        return  taskRepository.findAllByUseridAndDate(userid, date);
+        return  taskRepository.findAllByUsernameAndDate(userid, date);
     }
     public Task create(Task task){
         return taskRepository.save(task);

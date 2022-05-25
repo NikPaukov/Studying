@@ -18,17 +18,18 @@
             <form class="register-form" action="/login" method="post">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <label for="username">Ім'я користувача:</label>
-                <input id ="username"type="text" name="username" placeholder="user">
+                <input id ="username" type="text" name="username" placeholder="user">
                 <label for="password">Пароль:</label>
-                <input id="password"type="password" name="password" placeholder="***********">
+                <input id="password" type="password" name="password" placeholder="***********">
                 <button>Увійти</button>
-                <div th:if="${param.error}"  class="error">
+                <a href="/register">зареєструватися</a>
+                <p th:if="${param.error}"  class="error">
                     Неправильне ім'я користувача або пароль
-                </div>
-                <div th:if="${param.logout}" class="alert alert-success">
-                    <a>зареєструватися</a>
+                </p>
+
+                <p th:if="${param.logout}" class="alert alert-success">
                     Ви вийшли з акаунту!
-                </div>
+                </p>
             </form>
 
 
